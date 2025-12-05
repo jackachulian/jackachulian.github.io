@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Sequence Alignment Spell Checker</title>
+    <style>
+        :root {
+            --primary-color: #2b579a;
+            --bg-color: #f3f2f1;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #444;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(43, 87, 154, 0.2);
+        }
+
+        #status-msg {
+            font-size: 0.8rem;
+            color: #888;
+            height: 1.2em;
+            margin-bottom: 15px;
+            text-align: right;
+        }
+
+        .results-section {
+            margin-top: 10px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+            display: none; 
+        }
+
+        .results-header {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        #suggestions-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .suggestion-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 10px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.1s;
+        }
+
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        .suggestion-item:hover {
+            background-color: #f9f9f9;
+        }
+
+        .score-badge {
+            background-color: #e1dfdd;
+            color: #333;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Spell Checker</h2>
+
+    <p style="font-size: 0.9em; color: #666;">Using vocabulary from Pride & Prejudice</p>
+
+    <div class="input-group">
+        <label for="userWord">Enter a word:</label>
+        <input type="text" id="userWord" placeholder="start typing..." autocomplete="off" disabled>
+    </div>
+    
+    <div id="status-msg" style="display: none;">Loading Dictionary...</div>
+
+    <div class="results-section" id="resultsArea">
+        <div class="results-header">Suggestions (Top 10)</div>
+        <ul id="suggestions-list">
+            </ul>
+    </div>
+</div>
+
+<script>
+
+    // ---- DATA
+
+    let dictionary = [];
+    let debounceTimer;
+    
+    const inputField = document.getElementById('userWord');
+    const statusMsg = document.getElementById('status-msg');
+    const resultsArea = document.getElementById('resultsArea');
+    const listElement = document.getElementById('suggestions-list');
+
+    // ---- LOAD DICTIONARY FROM SERVER
+
+    async function loadDictionary() {
+        try {
+            const response = await fetch('dictionary.txt');
+            if (!response.ok) throw new Error('Network error');
+            const textData = await response.text();
+            
+            dictionary = textData.split(/\r?\n/).filter(word => word.trim().length > 0);
+
+            // Enable Input
+            inputField.disabled = false;
+            statusMsg.textContent = "Dictionary Loaded. Ready.";
+            inputField.focus();
+
+        } catch (error) {
+            console.error(error);
+            statusMsg.textContent = "Error: dictionary.txt not found.";
+            statusMsg.style.color = "red";
+        }
+    }
+
+    loadDictionary();
+
+    // ---- EVENT LISTENER
+    
+    inputField.addEventListener('input', function() {
+        const query = this.value.trim();
+
+        clearTimeout(debounceTimer);
+
+        if (query.length === 0) {
+            resultsArea.style.display = 'none';
+            statusMsg.textContent = "Ready.";
+            return;
+        }
+
+        statusMsg.textContent = "Thinking...";
+
+        debounceTimer = setTimeout(() => {
+            updateSuggestions(query);
+        }, 250);
+    });
+
+    // ---- SPELLCHECK ALGORITHM
+
+    function isVowel(char) {
+        if (!char) return false;
+        return ['a', 'e', 'i', 'o', 'u'].includes(char.toLowerCase());
+    }
+
+    function getSubstitutionCost(char1, char2) {
+        if (char1 === char2) return 0;
+        const isV1 = isVowel(char1);
+        const isV2 = isVowel(char2);
+        return (isV1 === isV2) ? 1 : 3;
+    }
+    
+    function calculatePenalty(source, target) {
+        const n = source.length;
+        const m = target.length;
+        const GAP_PENALTY = 2;
+
+        const dp = Array.from({ length: n + 1 }, () => Array(m + 1).fill(0));
+
+        for (let i = 0; i <= n; i++) dp[i][0] = i * GAP_PENALTY;
+        for (let j = 0; j <= m; j++) dp[0][j] = j * GAP_PENALTY;
+
+        for (let i = 1; i <= n; i++) {
+            for (let j = 1; j <= m; j++) {
+                const charS = source[i - 1];
+                const charT = target[j - 1];
+                const costSub = getSubstitutionCost(charS, charT);
+                
+                dp[i][j] = Math.min(
+                    dp[i - 1][j - 1] + costSub, // Diagonal
+                    dp[i - 1][j] + GAP_PENALTY, // Up
+                    dp[i][j - 1] + GAP_PENALTY  // Left
+                );
+            }
+        }
+        return dp[n][m];
+    }
+
+    // ---- UPDATE UI
+
+    function updateSuggestions(inputWord) {
+        const lowerInput = inputWord.toLowerCase();
+
+        // Calculate
+        const scoredWords = dictionary.map(dictWord => {
+            const cleanDictWord = dictWord.trim();
+            return {
+                word: cleanDictWord,
+                score: calculatePenalty(lowerInput, cleanDictWord.toLowerCase())
+            };
+        });
+
+        // Sort
+        scoredWords.sort((a, b) => a.score - b.score);
+
+        // Render
+        listElement.innerHTML = ''; 
+        const top10 = scoredWords.slice(0, 10);
+
+        top10.forEach(item => {
+            const li = document.createElement('li');
+            li.className = 'suggestion-item';
+            
+            // Highlight exact match
+            const fontWeight = item.word.toLowerCase() === lowerInput ? 'bold' : 'normal';
+
+            li.innerHTML = `
+                <span style="font-weight: ${fontWeight}">${item.word}</span>
+                <span class="score-badge">${item.score}</span>
+            `;
+            listElement.appendChild(li);
+        });
+
+        resultsArea.style.display = 'block';
+        statusMsg.textContent = "Done.";
+    }
+</script>
+
+</body>
+</html>
