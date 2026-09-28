@@ -154,6 +154,15 @@ main {
     font-size: 1.5rem;
 }
 
+.project-card-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.project-card-link:hover {
+    color: var(--accent);
+}
+
 code {
     display: block;
     overflow-x: auto;

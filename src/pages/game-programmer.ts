@@ -1,16 +1,21 @@
 import { loadProjects } from "../projects";
 import { createShaderBackground } from "../webgl";
+import { gameProgrammerProjectIds } from "../content/portfolios/game-programmer";
 import headerShader from "../shaders/header.frag?raw";
 import mainShader from "../shaders/main.frag?raw";
 
 const portfolioPath = "/portfolios/game-programmer";
 
 export function renderGameProgrammerPortfolio() {
-    const projects = loadProjects();
+    const projectsById = new Map(loadProjects().map(project => [project.id, project]));
+    const projects = gameProgrammerProjectIds.flatMap(id => {
+        const project = projectsById.get(id);
+        return project ? [project] : [];
+    });
     const app = document.querySelector<HTMLDivElement>("#app")!;
 
     app.innerHTML = `
-        <a class="portfolio-home-link" href="/portfolios/">← All portfolios</a>
+        <!-- <a class="portfolio-home-link" href="/portfolios/">← All portfolios</a> -->
         <header class="hero">
             <h1>Jack Caesar</h1>
             <p>Computer Science Student &amp; Game Programmer</p>
@@ -45,24 +50,25 @@ export function renderGameProgrammerPortfolio() {
     const projectsContainer = document.querySelector<HTMLDivElement>("#project-cards")!;
 
     for (const project of projects) {
-        const card = document.createElement("a");
+        const card = document.createElement("article");
         const thumbnailUrl = project.thumbnail
             ? new URL(`../content/projects/${project.id}/${project.thumbnail}`, import.meta.url).href
             : "";
 
         card.className = "project-card";
-        card.href = `${portfolioPath}/projects/${project.id}/`;
 
         let subtitleText = `${new Date(project.date).getFullYear()} · ${project.status}`;
         if (project.itchPage) subtitleText += ` · <a href="${project.itchPage}">Itch.IO</a>`;
         if (project.steamPage) subtitleText += ` · <a href="${project.steamPage}">Steam</a>`;
 
         card.innerHTML = `
-            <div class="project-image">
-                ${thumbnailUrl ? `<img src="${thumbnailUrl}" alt="${project.title} Thumbnail">` : ""}
-            </div>
+            <a href="${portfolioPath}/projects/${project.id}/">
+                <div class="project-image">
+                    ${thumbnailUrl ? `<img src="${thumbnailUrl}" alt="${project.title} Thumbnail">` : ""}
+                </div>
+            </a>
             <div class="project-content">
-                <h3>${project.title}</h3>
+                <h3><a class="project-card-link" href="${portfolioPath}/projects/${project.id}/">${project.title}</a></h3>
                 <p>${project.shortDescription}</p>
                 <div class="project-tags">
                     ${project.technologies.map(technology => `<span>${technology}</span>`).join("")}

@@ -4,7 +4,6 @@ export interface Project {
     shortDescription: string;
     date: string;
     status: string;
-    displayOnHomepage?: boolean;
     itchPage?: String,
     steamPage?: String,
 
