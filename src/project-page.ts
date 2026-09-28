@@ -85,7 +85,7 @@ export async function renderProjectPage(id: string) {
 
     app.innerHTML = `
         <main class="project-page">
-            <a href="/" class="back-button">
+            <a href="/portfolios/game-programmer/#projects" class="back-button">
                 ← Back to Projects
             </a>
 

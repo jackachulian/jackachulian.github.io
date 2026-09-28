@@ -227,3 +227,149 @@ code {
     stroke-linejoin: round;
     stroke-width: 1.7;
 }
+
+.site-home-hero {
+    min-height: 65vh;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 12vh 24px 64px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background: radial-gradient(ellipse at 80% 30%, #524239 0%, transparent 52%);
+}
+
+.eyebrow,
+.site-home-main > span,
+.portfolio-number {
+    color: var(--foreground-subtitle);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.site-home-hero h1 {
+    max-width: 780px;
+    margin: 20px 0;
+    font-size: clamp(2.6rem, 8vw, 5rem);
+    line-height: 0.98;
+}
+
+.site-home-intro {
+    max-width: 620px;
+    color: var(--foreground-small);
+    line-height: 1.5;
+}
+
+.primary-link,
+.text-link,
+.portfolio-home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.primary-link {
+    margin-top: 24px;
+    padding: 12px 16px;
+    color: var(--background);
+    background: var(--accent);
+    text-decoration: none;
+}
+
+.primary-link:hover {
+    background: var(--foreground);
+}
+
+.site-home-main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 28px 24px 100px;
+    border-top: 1px solid var(--border);
+}
+
+.site-home-main p,
+.portfolio-directory header > p:last-child {
+    color: var(--foreground-small);
+}
+
+.portfolio-directory {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 42px 24px 100px;
+}
+
+.portfolio-directory header {
+    margin: 72px 0 40px;
+}
+
+.portfolio-directory h1 {
+    margin: 8px 0;
+    font-size: 3rem;
+}
+
+.portfolio-list {
+    border-top: 1px solid var(--border);
+}
+
+.portfolio-list-item {
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    gap: 20px;
+    align-items: center;
+    padding: 24px 8px;
+    border-bottom: 1px solid var(--border);
+    color: var(--foreground);
+    text-decoration: none;
+}
+
+.portfolio-list-item:hover strong,
+.portfolio-list-item:hover .portfolio-arrow {
+    color: var(--accent);
+}
+
+.portfolio-list-copy {
+    display: grid;
+    gap: 8px;
+}
+
+.portfolio-list-copy strong {
+    font-size: 1.3rem;
+}
+
+.portfolio-list-copy > span {
+    color: var(--foreground-small);
+    font-size: 0.85rem;
+}
+
+.portfolio-arrow {
+    font-size: 1.5rem;
+}
+
+.portfolio-home-link {
+    margin: 24px 24px 0;
+    color: var(--foreground-small);
+    text-decoration: none;
+}
+
+.portfolio-home-link:hover,
+.text-link:hover {
+    color: var(--accent);
+}
+
+@media (max-width: 700px) {
+    .site-home-hero {
+        min-height: 60vh;
+        background: radial-gradient(ellipse at 65% 25%, #524239 0%, transparent 60%);
+    }
+
+    .portfolio-list-item {
+        grid-template-columns: 36px 1fr auto;
+        gap: 12px;
+    }
+
+    .portfolio-list-copy > span {
+        line-height: 1.4;
+    }
+}
