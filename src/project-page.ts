@@ -60,6 +60,24 @@ export async function renderProjectPage(id: string) {
         image.src = new URL(`./content/projects/${project.id}/${image.getAttribute("src") || ""}`, import.meta.url).href;
     });
 
+    parsedDocument.querySelectorAll<HTMLVideoElement>("video").forEach(video => {
+        const source = video.getAttribute("src");
+        if (source) {
+            video.src = new URL(`./content/projects/${project.id}/${source}`, import.meta.url).href;
+        }
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = true;
+        video.defaultMuted = true;
+        video.setAttribute("muted", "");
+        video.playsInline = true;
+    });
+
+    parsedDocument.querySelectorAll<HTMLSourceElement>("video source[src]").forEach(source => {
+        source.src = new URL(`./content/projects/${project.id}/${source.getAttribute("src") || ""}`, import.meta.url).href;
+    });
+
+
     const html = parsedDocument.body.innerHTML;
     // console.log(html);
 

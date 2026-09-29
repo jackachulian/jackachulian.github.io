@@ -94,6 +94,8 @@ A lot of the gameplay code was written by our other programmer (Brandon), but I 
 
 Our game combines fact-paced rhythm gameplay with dialogue that passes by quickly. Players are expected to act quickly and choose dialogue choices that they think won't pester the person they're talking to much - if they choose a bad dialogue option, their notes speed up and the rhythm gameplay becomes more difficult!
 
-![Rhythm Gameplay](gameplay-rhythm.png)
-![Dialogue Gameplay](gameplay-dialogue.png)
+<video width="750" height="420" controls>
+  <source src="gameplay.mp4" type="video/mp4">
+</video>
+
 ![Arcade Menu](gameplay-arcade.png)

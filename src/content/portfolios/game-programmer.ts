@@ -1,7 +1,7 @@
 export const gameProgrammerProjectIds = [
+    "expedition",
     "which-witch",
     "mana-cycle",
-    "expedition",
     "overflow",
     "closed-eyes"
 ] as const;

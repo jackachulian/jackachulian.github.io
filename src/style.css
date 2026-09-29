@@ -134,6 +134,7 @@ main {
 .project-image {
     aspect-ratio: 16 / 10;
     max-width: 500px;
+    max-height: 500px;
     background: #222;
     margin: 0 auto;
 }
@@ -143,6 +144,12 @@ main {
     height: 100%;
     display: block;
     object-fit: cover;
+}
+
+.project-page video {
+    background: #222;
+    display: block;
+    margin: 0 auto;
 }
 
 .project-content {
@@ -218,9 +225,11 @@ code {
 }
 
 .project-page img {
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
+    height: 100%;
     max-width: 750px;
+    max-height: 500px;
     display: block;
     margin: 0 auto;
     padding-top: 8px;
