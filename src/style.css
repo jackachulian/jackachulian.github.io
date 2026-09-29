@@ -149,7 +149,7 @@ main {
 .project-page video {
     background: #222;
     display: block;
-    margin: 0 auto;
+    margin: 16px auto;
 }
 
 .project-content {

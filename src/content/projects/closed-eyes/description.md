@@ -6,6 +6,12 @@
 
 I wanted to go for a highly organized project structure for this project. Each script folder fills a specific module of the project, and each layer in the scene tree fulfills a specific visual element of the game that needs to be displayed. This allows for a highly effecient workflow and makes it easy to find a particular feature of the project. I will be taking ideas from this setup into every future game I make as it makes debugging and inter-component cooperation very simple and streamlined.
 
+## Gameplay
+
+![Gameplay](gameplay.png)
+
+In this game, the player is a newspaper editor who has to balance their reputation with multiple different factions. They can "spin" the choices in the articles they edit to have a certain perception that may be more or less favorable to each faction. If a player reaches a 0 reputation score with a faction, they will lose the game at the end of the act if they do not recover their reputation.
+
 ## Article System
 
 For this game jam, I created the article system, and handed off the story responsibilites to our writer Brandon. I wanted to amke the system easily readable and editable so that he could create lots and lots of articles quickly and with ease before our game jam time was up. This is what an article looks like in plain-text format before it is loaded into the game:
