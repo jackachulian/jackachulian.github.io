@@ -47,11 +47,14 @@ Here is an example what a .song file may look like:
 offset=-0.00015830004122
 
 [bpms]
+# Stores the start time, starting speed, minimum speed, maximum speed, and time signature of each beats-per-minute range
+# Allows each section of the song to be synchronized with the visuals on screen
 0.0,141.0,100.0,180.0,4
 372.0,177.0,100.0,180.0,4
 632.0,88.5,88.5,180.0,4
 
 [notes]
+# The time, track number, type, and duration (if applicable) of each note
 0.0,0,hold,3.0
 5.0,1,hold,2.0
 35.0,2,tap
