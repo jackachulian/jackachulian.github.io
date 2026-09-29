@@ -1,0 +1,20 @@
+{
+    "id": "expedition",
+    "title": "Infinity Realm: Expedition",
+    "thumbnail": "thumbnail.png",
+    "shortDescription": "3D pixelated Action RPG",
+    "date": "2024-10-10",
+    "status": "On Hold",
+    "links": {
+        "itch": "https://jackachulian.itch.io/expedition",
+        "github": "https://github.com/jackachulian/Infinity-Realm-Expedition"
+    },
+    "technologies": [
+        "Godot",
+        "GDScript"
+    ],
+    "categories": [
+        "Game Development",
+        "Programming"
+    ]
+}

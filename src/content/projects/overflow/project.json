@@ -5,7 +5,10 @@
     "shortDescription": "Screen-Warping Puzzle Platformer",
     "date": "2025-08-03",
     "status": "Finished",
-    "itchPage": "https://jackachulian.itch.io/overflow",
+    "links": {
+        "itch": "https://jackachulian.itch.io/overflow",
+        "github": "https://github.com/jackachulian/GMTK2025"
+    },
     "technologies": [
         "Unity",
         "C#"

@@ -4,7 +4,9 @@
     "shortDescription": "Rhythm Game + Dating Sim Visual Novel",
     "date": "2024-10-17",
     "status": "In Development",
-    "itchPage": "https://jackachulian.itch.io/which-witch",
+    "links": {
+        "itch": "https://jackachulian.itch.io/which-witch"
+    },
     "technologies": [
         "Godot",
         "GDScript"

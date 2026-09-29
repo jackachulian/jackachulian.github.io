@@ -4,8 +4,6 @@ export interface Project {
     shortDescription: string;
     date: string;
     status: string;
-    itchPage?: String,
-    steamPage?: String,
 
     technologies: string[];
     categories: string[];
@@ -16,5 +14,6 @@ export interface Project {
         github?: string;
         website?: string;
         itch?: string;
+        steam?: string;
     };
 }

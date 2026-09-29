@@ -75,11 +75,17 @@ export async function renderProjectPage(id: string) {
     //         : undefined;
 
     var subtitle_text = `${new Date(project.date).getFullYear()} · ${project.status}`
-    if (project.itchPage) {
-        subtitle_text += ` · <a href="${project.itchPage}"><svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5" /></svg><span>Itch.IO</span></a>`;
+    if (project.links?.website) {
+        subtitle_text += ` · <a href="${project.links.website}"><span>Website</span></a>`;
     }
-    if (project.steamPage) {
-        subtitle_text += ` · <a href="${project.steamPage}"><svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><circle cx="16.5" cy="7.5" r="3.5" /><circle cx="7" cy="17" r="3" /><path d="m9.2 15.1 4.8-4.8M4.3 16.1l3.5 1.6" /></svg><span>Steam</span></a>`;
+    if (project.links?.steam) {
+        subtitle_text += ` · <a href="${project.links.steam}"><svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><circle cx="16.5" cy="7.5" r="3.5" /><circle cx="7" cy="17" r="3" /><path d="m9.2 15.1 4.8-4.8M4.3 16.1l3.5 1.6" /></svg><span>Steam</span></a>`;
+    }
+    if (project.links?.itch) {
+        subtitle_text += ` · <a href="${project.links.itch}"><svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5" /></svg><span>Itch.IO</span></a>`;
+    }
+    if (project.links?.github) {
+        subtitle_text += ` · <a href="${project.links.github}"><svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M12 3a9 9 0 0 0-2.8 17.6c.45.08.62-.2.62-.43v-1.52c-2.52.55-3.05-1.07-3.05-1.07-.41-1.04-1-1.32-1-1.32-.82-.56.06-.55.06-.55.9.06 1.37.92 1.37.92.8 1.37 2.1.98 2.61.75.08-.58.31-.98.57-1.2-2.01-.23-4.12-1-4.12-4.45 0-.98.35-1.78.92-2.4-.09-.23-.4-1.14.09-2.37 0 0 .75-.24 2.46.92a8.5 8.5 0 0 1 4.48 0c1.71-1.16 2.46-.92 2.46-.92.49 1.23.18 2.14.09 2.37.57.62.92 1.42.92 2.4 0 3.46-2.11 4.22-4.13 4.45.32.28.6.82.6 1.66v2.33c0 .23.16.51.62.43A9 9 0 0 0 12 3z" /></svg><span>GitHub</span></a>`;
     }
 
 

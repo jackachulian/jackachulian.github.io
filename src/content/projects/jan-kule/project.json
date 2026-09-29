@@ -5,7 +5,9 @@
     "shortDescription": "Terrain-painting Metroidvania",
     "date": "2026-06-30",
     "status": "Finished",
-    "itchPage": "https://jackachulian.itch.io/jan-kule",
+    "links": {
+        "itch": "https://jackachulian.itch.io/jan-kule"
+    },
     "technologies": [
         "Godot",
         "GDScript",

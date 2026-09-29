@@ -41,7 +41,7 @@ export function renderGameProgrammerPortfolio() {
         <main>
             <p>Hey there! I'm a game programmer and computer science student. I love getting into the technical aspects of game development and making systems that are built to last. I'm also a musician and play jazz piano and trombone! Below is a list of some of my projects.</p>
             <section id="projects">
-                <h2 class="projects-header">Projects</h2>
+                <h2 class="projects-header">Featured Projects</h2>
                 <div id="project-cards" class="projects-grid"></div>
             </section>
         </main>
@@ -58,8 +58,10 @@ export function renderGameProgrammerPortfolio() {
         card.className = "project-card";
 
         let subtitleText = `${new Date(project.date).getFullYear()} · ${project.status}`;
-        if (project.itchPage) subtitleText += ` · <a href="${project.itchPage}">Itch.IO</a>`;
-        if (project.steamPage) subtitleText += ` · <a href="${project.steamPage}">Steam</a>`;
+        if (project.links?.website) subtitleText += ` · <a href="${project.links.website}">Website</a>`;
+        if (project.links?.steam) subtitleText += ` · <a href="${project.links.steam}">Steam</a>`;
+        if (project.links?.itch) subtitleText += ` · <a href="${project.links.itch}">Itch.IO</a>`;
+        if (project.links?.github) subtitleText += ` · <a href="${project.links.github}">GitHub</a>`;
 
         card.innerHTML = `
             <a href="${portfolioPath}/projects/${project.id}/">

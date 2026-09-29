@@ -5,7 +5,10 @@
     "shortDescription": "Visual Novel",
     "date": "2026-06-27",
     "status": "On Hold",
-    "itchPage": "https://jackachulian.itch.io/closed-eyes",
+    "links": {
+        "itch": "https://jackachulian.itch.io/closed-eyes",
+        "github": "https://github.com/jackachulian/SpinToWin"
+    },
     "technologies": [
         "Unity",
         "C#"
