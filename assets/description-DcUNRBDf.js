@@ -1,0 +1,1 @@
+var e=`A game`;export{e as default};
