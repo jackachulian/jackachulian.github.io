@@ -26,11 +26,15 @@ export function renderGameProgrammerPortfolio() {
                 </a>
                 <a href="https://jackachulian.itch.io" aria-label="Jack on Itch.io">
                     <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5" /></svg>
-                    <span>Itch.IO</span>
+                    <span>itch.io</span>
                 </a>
                 <a href="https://www.linkedin.com/in/jack-caesar-437103294" aria-label="Jack on LinkedIn">
                     <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M5 8v11M5 5.5v.01M10 19v-6a3 3 0 0 1 6 0v6M10 11v8" /></svg>
                     <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/jackachulian" aria-label="Jack on GitHub" target="_blank" rel="noopener noreferrer">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.9a3.4 3.4 0 0 0-.9-2.7c3-.3 6.1-1.5 6.1-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6s-1.2-.4-3.8 1.4a13.3 13.3 0 0 0-6.9 0C5.4 1.1 4.2 1.5 4.2 1.5a4.8 4.8 0 0 0-.1 3.6 5.2 5.2 0 0 0-1.4 3.6c0 5.2 3.1 6.4 6.1 6.7a3.4 3.4 0 0 0-.9 2.7V22" /></svg>
+                    <span>GitHub</span>
                 </a>
                 <a href="https://discord.com/users/403673232281960458" aria-label="Jack on Discord">
                     <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M7 7a12 12 0 0 1 10 0l2 10a12 12 0 0 1-14 0L7 7Zm2 6h.01M15 13h.01M8 9c2 1 6 1 8 0" /></svg>
