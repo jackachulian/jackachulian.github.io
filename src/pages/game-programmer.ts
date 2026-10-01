@@ -44,6 +44,13 @@ export function renderGameProgrammerPortfolio() {
                 <h2 class="projects-header">Featured Projects</h2>
                 <div id="project-cards" class="projects-grid"></div>
             </section>
+            <section class="resume-section" aria-labelledby="resume-heading">
+                <h2 id="resume-heading">Resume</h2>
+                <div class="resume-actions">
+                    <a href="/Resume-GameProgrammer-Fall2026.pdf" target="_blank" rel="noopener noreferrer">View</a>
+                    <a href="/Resume-GameProgrammer-Fall2026.pdf" download>Download</a>
+                </div>
+            </section>
         </main>
     `;
 

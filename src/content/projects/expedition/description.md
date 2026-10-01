@@ -31,7 +31,7 @@ A huge inspiration for the visual aesthetics of this project is the work of [tes
 
 ![Depth and Normal Outlines](outlines.png)
 
-Voyage's video tutorial, "[Creating Pixel Perfect Outlines for 3D Pixel Art](https://www.youtube.com/watch?v=LRDpEnpWohM&t=2s)", explains a lot of this process and has some helpful visuals. I adapted some of the same Unity code and figured out how to get a similar setup working in Godot, using a full-screen shader that reads the screen's color, depth and normal textures, and uses that data to construct the final images that contains crisp pixel-perfect outlines overlayed over the image.
+Voyage's video tutorial, ["Creating Pixel Perfect Outlines for 3D Pixel Art"](https://www.youtube.com/watch?v=LRDpEnpWohM&t=2s), explains a lot of this process and has some helpful visuals. I adapted some of the same Unity code and figured out how to get a similar setup working in Godot, using a full-screen shader that reads the screen's color, depth and normal textures, and uses that data to construct the final images that contains crisp pixel-perfect outlines overlayed over the image.
 
 <!-- 
 <video width="750" height="420" controls>
