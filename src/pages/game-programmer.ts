@@ -43,7 +43,7 @@ export function renderGameProgrammerPortfolio() {
             </nav>
         </header>
         <main>
-            <p>Hey there! I'm a game programmer and computer science student. I love getting into the technical aspects of game development and making systems that are built to last. I'm also a musician and play jazz piano and trombone! Below is a list of some of my projects.</p>
+            <p>Hey there! I'm a game programmer and computer science student. I love getting into the technical aspects of game development and making systems that are built to last. Below is a list of some of my projects.</p>
             <section id="projects">
                 <h2 class="projects-header">Featured Projects</h2>
                 <div id="project-cards" class="projects-grid"></div>
