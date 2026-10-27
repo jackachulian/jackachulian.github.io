@@ -15,7 +15,7 @@ export function renderGameProgrammerPortfolio() {
     const app = document.querySelector<HTMLDivElement>("#app")!;
 
     app.innerHTML = `
-        <!-- <a class="portfolio-home-link" href="/portfolios/">← All portfolios</a> -->
+        <a class="portfolio-home-link" href="/portfolios/">← All portfolios</a>
         <header class="hero">
             <h1>Jack Caesar</h1>
             <p>Computer Science Student &amp; Game Programmer</p>
@@ -36,10 +36,10 @@ export function renderGameProgrammerPortfolio() {
                     <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.9a3.4 3.4 0 0 0-.9-2.7c3-.3 6.1-1.5 6.1-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6s-1.2-.4-3.8 1.4a13.3 13.3 0 0 0-6.9 0C5.4 1.1 4.2 1.5 4.2 1.5a4.8 4.8 0 0 0-.1 3.6 5.2 5.2 0 0 0-1.4 3.6c0 5.2 3.1 6.4 6.1 6.7a3.4 3.4 0 0 0-.9 2.7V22" /></svg>
                     <span>GitHub</span>
                 </a>
-                <a href="https://discord.com/users/403673232281960458" aria-label="Jack on Discord">
+                <!--<a href="https://discord.com/users/403673232281960458" aria-label="Jack on Discord">
                     <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M7 7a12 12 0 0 1 10 0l2 10a12 12 0 0 1-14 0L7 7Zm2 6h.01M15 13h.01M8 9c2 1 6 1 8 0" /></svg>
                     <span>Discord</span>
-                </a>
+                </a>-->
             </nav>
         </header>
         <main>
